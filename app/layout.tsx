@@ -6,8 +6,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/provider";
 import { getIeltsCourse } from "@/lib/action/ielts-course.action";
 
-// import { Toaster } from "@/components/ui/toaster";
-
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
   variable: "--font-inter",
@@ -70,12 +68,12 @@ const RootLayout = async ({
   params,
 }: {
   children: ReactNode;
-  params: Promise<{ lang: "en" | "bn" }>;
+  params?: Promise<{ lang: "en" | "bn" }>;
 }) => {
-  const resolvedParams = await params;
+  const lang = params ? (await params).lang : undefined;
+  const language = lang || "en";
   return (
-    <html lang={resolvedParams.lang} suppressHydrationWarning>
-      <head></head>
+    <html lang={language} suppressHydrationWarning>
       <body
         className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
       >
@@ -87,7 +85,6 @@ const RootLayout = async ({
         >
           {children}
         </ThemeProvider>
-        {/* <Toaster /> */}
       </body>
     </html>
   );

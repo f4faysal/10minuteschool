@@ -1,10 +1,5 @@
-import type React from "react";
-import type { Metadata, ResolvingMetadata } from "next";
-import "@/app/globals.css";
-import { cn } from "@/lib/utils";
 import LanguageSwitcher from "@/components/language-switcher";
 import { BookOpen } from "lucide-react";
-import { getIeltsCourse } from "@/lib/action/ielts-course.action";
 
 export default async function webLayout({
   children,
@@ -15,7 +10,7 @@ export default async function webLayout({
 }) {
   const lang = (await params).lang || "en";
   return (
-    <>
+    <main>
       <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-background/80 backdrop-blur-sm dark:border-slate-800/80">
         <div className="container h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -37,6 +32,6 @@ export default async function webLayout({
           <p className="mt-2">Designed with passion for learning.</p>
         </div>
       </footer>
-    </>
+    </main>
   );
 }
