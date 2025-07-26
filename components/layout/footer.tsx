@@ -1,170 +1,201 @@
-import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-gray-900">
-      <div className="container mx-auto py-12 px-4">
-        {/* Top Section with columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Column 1 - About */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-slate-800 dark:text-slate-200">
-              10 Minute School
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Empowering learners with efficient and effective educational
-              resources to achieve their goals.
-            </p>
-          </div>
-
-          {/* Column 2 - Quick Links */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-slate-800 dark:text-slate-200">
-              Quick Links
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/courses"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Courses
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3 - IELTS Preparation */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-slate-800 dark:text-slate-200">
-              IELTS Prep
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/ielts/listening"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Listening
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ielts/reading"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Reading
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ielts/writing"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Writing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ielts/speaking"
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Speaking
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4 - Contact */}
-          <div>
-            <h3 className="font-semibold text-lg mb-4 text-slate-800 dark:text-slate-200">
-              Contact Us
-            </h3>
-            <address className="text-sm text-slate-600 dark:text-slate-400 not-italic">
-              <p>Email: info@10minuteschool.com</p>
-              <p>Phone: +880 1234-567890</p>
-            </address>
-          </div>
-        </div>
-
-        {/* Social Media Icons */}
-        <div className="flex justify-center space-x-6 mb-6">
-          <a
-            href="https://facebook.com"
-            className="text-slate-600 dark:text-slate-400 hover:text-blue-600"
-          >
-            <FaFacebook size={20} />
-          </a>
-          <a
-            href="https://twitter.com"
-            className="text-slate-600 dark:text-slate-400 hover:text-blue-400"
-          >
-            <FaTwitter size={20} />
-          </a>
-          <a
-            href="https://instagram.com"
-            className="text-slate-600 dark:text-slate-400 hover:text-pink-600"
-          >
-            <FaInstagram size={20} />
-          </a>
-          <a
-            href="https://linkedin.com"
-            className="text-slate-600 dark:text-slate-400 hover:text-blue-800"
-          >
-            <FaLinkedin size={20} />
-          </a>
-        </div>
-
-        {/* Copyright Section */}
-        <div className="pt-6 border-t border-slate-200 dark:border-slate-800 text-center text-sm text-slate-500 dark:text-slate-400">
-          <p>
-            &copy; {new Date().getFullYear()} 10 Minute School. All rights
-            reserved.
+    <footer className="bg-white border-t border-gray-100">
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Header Section */}
+        <div className="text-center space-y-2">
+          <Image
+            src="https://10minuteschool.com/images/logo.svg"
+            alt="10 Minute School"
+            width={180}
+            height={60}
+            className="object-contain mx-auto"
+          />
+          <h2 className="text-2xl lg:text-3xl font-light text-gray-900">
+            Learn anywhere, anytime
+          </h2>
+          <p className="text-gray-500 text-lg font-light ">
+            Download our mobile app for the best learning experience
           </p>
-          <p className="mt-2 flex justify-center space-x-4">
+        </div>
+
+        {/* App Download */}
+        <div className="flex items-center justify-center gap-4 py-4">
+          <Link
+            href="https://play.google.com/store/apps/details?id=com.a10minuteschool.tenminuteschool"
+            target="_blank"
+          >
+            <Image
+              src="https://cdn.10minuteschool.com/images/google-play-icon_1695731678094.png"
+              alt="Download on the Google Play Store"
+              width={120}
+              height={40}
+              className="h-12 w-auto mx-auto"
+            />
+          </Link>
+          <Link
+            href="https://apps.apple.com/us/app/10-minute-school/id1577061772"
+            target="_blank"
+          >
+            <Image
+              src="https://cdn.10minuteschool.com/images/ios-store-icon_1695731704002.png"
+              alt="Download on the Apple App Store"
+              width={120}
+              height={40}
+              className="h-12 w-auto mx-auto"
+            />
+          </Link>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 my-10">
+          {/* Company */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-6 uppercase tracking-wider">
+              Company
+            </h3>
+            <ul className="space-y-4">
+              {[
+                "Careers",
+                "Become a Teacher",
+                "Affiliate Program",
+                "Privacy Policy",
+                "Terms of Service",
+              ].map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href="#"
+                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-light flex items-center group"
+                  >
+                    {item}
+                    <ArrowUpRight
+                      size={12}
+                      className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-6 uppercase tracking-wider">
+              Resources
+            </h3>
+            <ul className="space-y-4">
+              {[
+                "Blog",
+                "Book Store",
+                "Free Guides",
+                "Job Prep",
+                "Certificates",
+              ].map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href="#"
+                    className="text-gray-600 hover:text-gray-900 transition-colors text-sm font-light flex items-center group"
+                  >
+                    {item}
+                    <ArrowUpRight
+                      size={12}
+                      className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-6 uppercase tracking-wider">
+              Contact
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">Phone</div>
+                <Link
+                  href="tel:16910"
+                  className="text-sm font-light text-gray-900 hover:text-gray-600"
+                >
+                  16910
+                </Link>
+              </div>
+              <div>
+                <div className="text-xs text-gray-500 mb-1">WhatsApp</div>
+                <Link
+                  href="https://wa.me/8801896016252"
+                  className="text-sm font-light text-gray-900 hover:text-gray-600"
+                >
+                  +880 189 601 6252
+                </Link>
+              </div>
+              <div>
+                <div className="text-xs text-gray-500 mb-1">Email</div>
+                <Link
+                  href="mailto:support@10minuteschool.com"
+                  className="text-sm font-light text-gray-900 hover:text-gray-600"
+                >
+                  support@10minuteschool.com
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-6 uppercase tracking-wider">
+              Stay Updated
+            </h3>
+            <div className="space-y-4">
+              <p className="text-sm font-light text-gray-600">
+                Get the latest updates and course announcements
+              </p>
+              <div className="space-y-3">
+                <input
+                  type="email"
+                  placeholder="Enter email address"
+                  className="w-full px-0 py-2 border-0 border-b border-gray-200 focus:border-gray-400 focus:outline-none bg-transparent text-sm placeholder-gray-400"
+                />
+                <button className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                  Subscribe →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex justify-center space-x-8 mb-4">
+          {[
+            { name: "Facebook", href: "#" },
+            { name: "Instagram", href: "#" },
+            { name: "LinkedIn", href: "#" },
+            { name: "YouTube", href: "#" },
+            { name: "TikTok", href: "#" },
+          ].map((social) => (
             <Link
-              href="/privacy"
-              className="hover:text-blue-600 dark:hover:text-blue-400"
+              key={social.name}
+              href={social.href}
+              className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors"
             >
-              Privacy Policy
+              {social.name}
             </Link>
-            <Link
-              href="/terms"
-              className="hover:text-blue-600 dark:hover:text-blue-400"
-            >
-              Terms of Service
-            </Link>
+          ))}
+        </div>
+
+        {/* Bottom */}
+        <div className="text-center">
+          <p className="text-xs font-light text-gray-500">
+            © 2015–2025 10 Minute School. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

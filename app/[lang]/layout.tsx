@@ -1,7 +1,7 @@
 import Footer from "@/components/layout/footer";
 import LanguageSwitcher from "@/components/language-switcher";
-import Navbar from "@/components/layout/navbar";
 import { BookOpen } from "lucide-react";
+import Navbar from "@/components/layout/navbar";
 
 export default async function webLayout({
   children,
