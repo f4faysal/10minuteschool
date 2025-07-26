@@ -76,7 +76,7 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
           <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Language Selector */}
             <button
-              className="hidden sm:flex gap-0.5 items-center justify-center text-gray-700 hover:text-gray-900 px-2 py-1 text-sm font-medium rounded-md hover:bg-gray-50 transition-colors duration-200"
+              className="hidden sm:flex gap-0.5 items-center justify-center text-gray-700 hover:text-gray-900 px-2 py-1 text-sm font-medium rounded-md bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
               onClick={() => handleLanguageChange(lang === "en" ? "bn" : "en")}
             >
               <IoLanguageOutline /> <span>{lang === "en" ? "বাং" : "En"}</span>
@@ -85,7 +85,7 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
             {/* Phone Number */}
             <Link
               href="tel:16910"
-              className="flex items-center text-green-600 hover:text-green-700 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-green-50"
+              className="flex items-center text-green-600 hover:text-green-700 transition-colors duration-200 px-2 py-1 rounded-md bg-green-50 hover:bg-green-100"
             >
               <Phone className="h-4 w-4 mr-1" />
               <span className="text-sm font-semibold">16910</span>
@@ -112,20 +112,6 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
             </button>
           </div>
         </div>
-
-        {/* Mobile Search Bar */}
-        <div className="md:hidden px-4 pb-3">
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              placeholder="সার্চ করুন..."
-              className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg bg-gray-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-            />
-          </div>
-        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -138,6 +124,19 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
       >
         <div className="bg-white border-t border-gray-100">
           <div className="px-4 py-3 space-y-1">
+            {/* Mobile Search Bar */}
+            <div className="px-2">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Search className="h-4 w-4 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="সার্চ করুন..."
+                  className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg bg-gray-50 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
+                />
+              </div>
+            </div>
             {menuItems.map((item, index) => (
               <Link
                 key={index}
@@ -151,11 +150,12 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
 
             {/* Mobile Language Selector */}
             <button
-              className="flex gap-0.5 w-full text-left px-3 py-3 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              className="flex w-full text-left px-3 py-3 text-base font-medium gap-1
+              items-center text-gray-700 hover:text-gray-900 bg-gray-50 rounded-md transition-colors duration-200"
               onClick={() => handleLanguageChange(lang === "en" ? "bn" : "en")}
             >
-              <IoLanguageOutline className="inline-block mr-2" />
-              {lang === "en" ? "বাং" : "En"}
+              <IoLanguageOutline className="inline-block " />
+              <span> {lang === "en" ? "বাং" : "En"}</span>
             </button>
           </div>
         </div>

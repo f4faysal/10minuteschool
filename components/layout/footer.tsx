@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -171,20 +173,42 @@ export default function Footer() {
         </div>
 
         {/* Social Links */}
-        <div className="flex justify-center space-x-8 mb-4">
+        <div className="flex flex-wrap justify-center space-x-4 mb-4">
           {[
-            { name: "Facebook", href: "#" },
-            { name: "Instagram", href: "#" },
-            { name: "LinkedIn", href: "#" },
-            { name: "YouTube", href: "#" },
-            { name: "TikTok", href: "#" },
+            {
+              name: "Facebook",
+              href: "https://www.facebook.com/10minuteschool/",
+              icon: <FaFacebookSquare />,
+            },
+            {
+              name: "Instagram",
+              href: "https://www.instagram.com/10ms_insta/",
+              icon: <FaInstagram />,
+            },
+            {
+              name: "LinkedIn",
+              href: "https://www.linkedin.com/company/10ms/",
+              icon: <FaLinkedin />,
+            },
+            {
+              name: "YouTube",
+              href: "https://www.youtube.com/channel/UCL89KKkLs0tZKld-iIS3NGw",
+              icon: <FaYoutube />,
+            },
+            {
+              name: "TikTok",
+              href: "https://www.tiktok.com/@10minuteschool?lang=en",
+              icon: <FaTiktok />,
+            },
           ].map((social) => (
             <Link
               key={social.name}
               href={social.href}
-              className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm font-light flex items-center text-gray-600 hover:text-green-900 transition-colors"
+              target="_blank"
             >
-              {social.name}
+              <span className="inline-block mr-1">{social.icon}</span>
+              <span>{social.name}</span>
             </Link>
           ))}
         </div>
