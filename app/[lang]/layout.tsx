@@ -12,10 +12,10 @@ export default async function webLayout({
 }) {
   const lang = (await params).lang || "en";
   return (
-    <>
+    <main>
       <Navbar lang={lang} />
       {children}
       <Footer />
-    </>
+    </main>
   );
 }
