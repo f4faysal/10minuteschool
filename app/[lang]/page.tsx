@@ -5,17 +5,11 @@ import ExclusiveFeaturesSection from "@/components/exclusive-features-section";
 import FAQSection from "@/components/faq-section";
 import FeaturesSection from "@/components/features-section";
 import FixedHeader from "@/components/fixed-header";
-import VideoGallery from "@/components/gallery";
 import Hero from "@/components/hero";
 import InstructorsSection from "@/components/instructors-section";
 import LearningOutcomesSection from "@/components/learning-outcomes-section";
 import TestimonialsSection from "@/components/testimonials-section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getIeltsCourse } from "@/lib/action/ielts-course.action";
-import { MessageCircle } from "lucide-react";
-import { section } from "motion/react-client";
-import Image from "next/image";
 
 export default async function ProductPage({
   params,
@@ -28,7 +22,7 @@ export default async function ProductPage({
   const sortedSections = data.sections.sort(
     (a, b) => a.order_idx - b.order_idx
   );
-
+  console.log(sortedSections);
   return (
     <div>
       <FixedHeader data={data} />

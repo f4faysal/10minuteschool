@@ -11,7 +11,7 @@ export default function InstructorsSection({
 
   return (
     <section className="space-y-2">
-      <h2 className="text-xl font-bold text-slate-900 mt-4">{section.name}</h2>
+      <h2 className="text-xl font-bold text-slate-900">{section.name}</h2>
       <div className="grid grid-cols-1 gap-6">
         {instructors.map((instructor) => (
           <div key={instructor.slug} className="border rounded-xs bg-white">

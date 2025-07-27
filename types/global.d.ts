@@ -63,6 +63,26 @@ interface Section {
   values: any[];
 }
 
+interface Offers {
+  type: string;
+  name: string;
+  description: string;
+  bg_color: string;
+  order_idx: number;
+  values: OfferValue[];
+}
+
+interface OfferValue {
+  background_color: string;
+  background_img: string;
+  checklist_text_color: string;
+  end_at: string;
+  id: string;
+  start_at: string;
+  template: string;
+  text: string;
+}
+
 interface Instructor {
   description: string;
   has_instructor_page: boolean;

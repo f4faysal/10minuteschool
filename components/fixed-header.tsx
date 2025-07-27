@@ -6,14 +6,12 @@ interface FixedHeaderProps {
 }
 
 const FixedHeader = ({ data }: FixedHeaderProps) => {
-  const course = data;
+  const { title, sections } = data;
   return (
     <section className="bg-neutral-900 text-white fixed top-0 left-0 right-0 z-10 h-16">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-full">
+      <div className="max-w-7xl mx-auto px-4 flex items-center  h-full">
         <div className="space-y-0.5">
-          <h1 className="text-base font-bold font-space-grotesk">
-            {course?.title}
-          </h1>
+          <h1 className="text-base font-bold font-space-grotesk">{title}</h1>
           <div className="flex items-center gap-0.5 cursor-pointer">
             <Image
               src="https://cdn.10minuteschool.com/images/Dev_Handoff_Q1_24_Frame_2_1725444418666.png"
