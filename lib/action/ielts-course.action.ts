@@ -3,6 +3,8 @@
 export async function getIeltsCourse(
   lang: "en" | "bn"
 ): Promise<ApiResponse | null> {
+  lang = lang === "en" ? "en" : "bn";
+
   const API_URL = `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`;
 
   try {

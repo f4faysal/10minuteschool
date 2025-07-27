@@ -93,7 +93,7 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
 
             {/* Login Button */}
             <Link
-              href="/login"
+              href="#"
               className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 whitespace-nowrap"
             >
               লগ-ইন
