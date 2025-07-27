@@ -2,6 +2,7 @@ import Checklist from "@/components/checklist";
 import CourseDetailsSection from "@/components/course-details-section";
 import EngagementSection from "@/components/engagement-section";
 import ExclusiveFeaturesSection from "@/components/exclusive-features-section";
+import FAQSection from "@/components/faq-section";
 import FeaturesSection from "@/components/features-section";
 import FixedHeader from "@/components/fixed-header";
 import VideoGallery from "@/components/gallery";
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getIeltsCourse } from "@/lib/action/ielts-course.action";
 import { MessageCircle } from "lucide-react";
+import { section } from "motion/react-client";
 import Image from "next/image";
 
 export default async function ProductPage({
@@ -84,10 +86,7 @@ export default async function ProductPage({
                     <TestimonialsSection key={section.type} section={section} />
                   );
                 case "faq":
-                  return (
-                    // <FaqSection key={section.type} section={section} />
-                    <>faq</>
-                  );
+                  return <FAQSection key={section.type} section={section} />;
                 case "free_items":
                   return (
                     // <FreeItemsSection key={section.type} section={section} />
