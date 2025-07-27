@@ -1,6 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { Check } from "lucide-react";
 
 interface ExclusiveFeaturesSectionProps {
   section: Section;
@@ -12,39 +10,43 @@ export default function ExclusiveFeaturesSection({
   const features = section.values as ExclusiveFeature[];
 
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-slate-100">
-        {section.name}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section className="space-y-4">
+      <h2 className="text-xl font-bold text-slate-900">{section.name}</h2>
+      <div className="border rounded-md p-6 md:p-8 flex flex-col gap-2">
         {features.map((feature) => (
-          <Card
+          <div
             key={feature.id}
-            className="overflow-hidden bg-white dark:bg-slate-800/50 border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-lg transition-shadow duration-300"
+            className="flex flex-col md:flex-row gap-6 items-start justify-between"
           >
-            <Image
-              src={feature.file_url || "/placeholder.svg"}
-              alt={feature.title}
-              width={500}
-              height={500}
-              className="w-full h-auto object-cover aspect-square"
-            />
-            <CardContent className="p-6">
-              <h3 className="text-lg font-bold mb-4 text-slate-800 dark:text-slate-200">
+            {/* Textual content */}
+            <div className="flex-1 space-y-4">
+              <h3 className="text-base font-semibold text-slate-800 ">
                 {feature.title}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2 pl-0">
                 {feature.checklist.map((item, index) => (
-                  <li key={index} className="flex items-start gap-2.5">
-                    <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400">
-                      {item}
-                    </span>
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 text-slate-700 text-sm leading-relaxed"
+                  >
+                    <span className="mt-1 text-blue-500">✔</span>
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </CardContent>
-          </Card>
+            </div>
+
+            {/* Image */}
+            <div className="w-full md:w-48 flex-shrink-0">
+              <Image
+                src={feature.file_url || "/placeholder.svg"}
+                alt={feature.title}
+                width={224}
+                height={224}
+                className="rounded-md w-full h-auto object-cover"
+              />
+            </div>
+          </div>
         ))}
       </div>
     </section>

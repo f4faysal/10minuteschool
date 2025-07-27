@@ -1,5 +1,15 @@
+import Checklist from "@/components/checklist";
+import CourseDetailsSection from "@/components/course-details-section";
+import EngagementSection from "@/components/engagement-section";
+import ExclusiveFeaturesSection from "@/components/exclusive-features-section";
+import FAQSection from "@/components/faq-section";
+import FeaturesSection from "@/components/features-section";
+import FixedHeader from "@/components/fixed-header";
+import Hero from "@/components/hero";
+import InstructorsSection from "@/components/instructors-section";
+import LearningOutcomesSection from "@/components/learning-outcomes-section";
+import TestimonialsSection from "@/components/testimonials-section";
 import { getIeltsCourse } from "@/lib/action/ielts-course.action";
-import Image from "next/image";
 
 export default async function ProductPage({
   params,
@@ -7,59 +17,71 @@ export default async function ProductPage({
   params: Promise<{ lang: "en" | "bn" }>;
 }) {
   const lang = (await params).lang || "en";
-  const courseData = await getIeltsCourse(lang);
-  console.log(courseData);
+  const productData = await getIeltsCourse(lang);
+  const { data } = productData as ApiResponse;
+  const sortedSections = data.sections.sort(
+    (a, b) => a.order_idx - b.order_idx
+  );
+  console.log(sortedSections);
   return (
-    <div className="relative">
-      {/* Fixed Header */}
-      <section className="bg-neutral-900 text-white fixed top-0 left-0 right-0 z-10 h-16">
-        <div className="container mx-auto px-4 flex items-center justify-between h-full">
-          <div className="space-y-0.5">
-            <h1 className="text-base font-bold font-space-grotesk">
-              {courseData?.data.title}
-            </h1>
-            <div className="flex items-center gap-0.5 cursor-pointer">
-              <Image
-                src="https://cdn.10minuteschool.com/images/Dev_Handoff_Q1_24_Frame_2_1725444418666.png"
-                alt="Rating"
-                width={500}
-                height={300}
-                className="h-4 w-auto object-contain"
-              />
-              <p className="text-xs font-medium">
-                (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
-              </p>
-            </div>
+    <div>
+      <FixedHeader data={data} />
+      <Hero data={data} />
+      <section className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-4">
+          <div className="md:col-span-2 order-2 md:order-1 space-y-8">
+            {sortedSections.map((section) => {
+              switch (section.type) {
+                case "instructors":
+                  return (
+                    <InstructorsSection key={section.type} section={section} />
+                  );
+                case "features":
+                  return (
+                    <FeaturesSection key={section.type} section={section} />
+                  );
+                case "group_join_engagement":
+                  return (
+                    <EngagementSection key={section.type} section={section} />
+                  );
+                case "pointers":
+                  return (
+                    <LearningOutcomesSection
+                      key={section.type}
+                      section={section}
+                    />
+                  );
+                case "about":
+                  return (
+                    <CourseDetailsSection
+                      key={section.type}
+                      section={section}
+                    />
+                  );
+                case "feature_explanations":
+                  return (
+                    <ExclusiveFeaturesSection
+                      key={section.type}
+                      section={section}
+                    />
+                  );
+                case "testimonials":
+                  return (
+                    <TestimonialsSection key={section.type} section={section} />
+                  );
+                case "faq":
+                  return <FAQSection key={section.type} section={section} />;
+
+                default:
+                  return null;
+              }
+            })}
           </div>
-          <div className=" items-center gap-2 hidden sm:flex">
-            <div className="space-y-0.5">
-              <span className="flex items-center gap-1 text-sm font-medium text-gray-300">
-                <Image
-                  src={courseData?.data.checklist[0]?.icon || ""}
-                  alt="Participants"
-                  width={500}
-                  height={300}
-                  className="h-4 object-contain bg-white w-fit rounded-full p-0.5"
-                />
-                <span>{courseData?.data.checklist[0]?.text}</span>
-              </span>
-              <span className="flex items-center gap-1 justify-end">
-                <span className="text-green-500 font-bold text-sm">৳ 3850</span>
-                <span className="text-red-400 line-through text-xs font-normal">
-                  ৳ 5000
-                </span>
-              </span>
-            </div>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 transition-colors">
-              {courseData?.data.cta_text.name}
-            </button>
+          <div className="md:col-span-1 order-1 md:order-2 md:-mt-[300px]">
+            <Checklist data={data} />
           </div>
         </div>
       </section>
-      {/* Main Content */}
-      <section className="bg-neutral-950 text-white h-[500px]"></section>
-      {/* Placeholder for main content */}
-      <section className="bg-white h-[500px]"></section>
     </div>
   );
 }
