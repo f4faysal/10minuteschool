@@ -38,12 +38,20 @@ export default function VideoGallery({ media }: VideoGalleryProps) {
     setIsVideoPlaying(true);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "ArrowLeft") {
+      prevSlide();
+    } else if (event.key === "ArrowRight") {
+      nextSlide();
+    }
+  };
+
   if (!currentMedia) {
     return <div className="text-center text-gray-500">No media available</div>;
   }
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2" onKeyDown={handleKeyDown} tabIndex={0}>
       {/* Main Video/Image Display */}
       <div className="relative aspect-video rounded-xs overflow-hidden bg-black group">
         <div className="relative w-full h-full">
@@ -73,7 +81,8 @@ export default function VideoGallery({ media }: VideoGalleryProps) {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button
                     onClick={handlePlayVideo}
-                    className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors cursor-pointer group-hover:scale-110 transform duration-200"
+                    aria-label="Play video"
+                    className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors cursor-pointer group-hover:scale-110 transform duration-200 focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
                     <Play
                       className="w-8 h-8 text-green-600 ml-1"
@@ -90,14 +99,16 @@ export default function VideoGallery({ media }: VideoGalleryProps) {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 opacity-100 md:opacity-0 group-hover:opacity-100 transition"
+                aria-label="Previous slide"
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70 opacity-100 md:opacity-0 group-hover:opacity-100 transition focus:outline-none focus:ring-2 focus:ring-white"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
               <button
                 onClick={nextSlide}
-                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70  opacity-100 md:opacity-0 group-hover:opacity-100 transition"
+                aria-label="Next slide"
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-black/50 text-white rounded-full flex items-center justify-center hover:bg-black/70  opacity-100 md:opacity-0 group-hover:opacity-100 transition focus:outline-none focus:ring-2 focus:ring-white"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -108,12 +119,18 @@ export default function VideoGallery({ media }: VideoGalleryProps) {
 
       {/* Thumbnail Navigation */}
       {previewMedia.length > 1 && (
-        <div className="flex gap-3 p-4 overflow-x-auto scrollbar-hide">
+        <div
+          className="flex gap-3 p-4 overflow-x-auto scrollbar-hide"
+          role="tablist"
+        >
           {previewMedia.map((item, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`relative flex-shrink-0 w-16 h-12 rounded-xs overflow-hidden transition-all ${
+              aria-label={`Go to slide ${index + 1}`}
+              aria-selected={index === currentIndex}
+              role="tab"
+              className={`relative flex-shrink-0 w-16 h-12 rounded-xs overflow-hidden transition-all focus:outline-none focus:ring-2 focus:ring-green-500 ${
                 index === currentIndex
                   ? "ring-2 ring-green-500 ring-offset-2"
                   : "hover:ring-2 hover:ring-gray-300"

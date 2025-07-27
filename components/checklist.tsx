@@ -16,6 +16,13 @@ const Checklist = ({ data }: ChecklistProps) => {
           <VideoGallery media={media} />
         </div>
         <div className="md:p-4 pt-0 ">
+          {/* Price Display */}
+          <div className="mb-4 text-center">
+            <div className="text-3xl font-bold text-green-600">৳1,000</div>
+            <div className="text-sm text-gray-500 line-through">৳2,500</div>
+            <div className="text-xs text-green-600 font-medium">60% ছাড়</div>
+          </div>
+
           <Button className="w-full mb-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 text-lg">
             {cta_text.name}
           </Button>

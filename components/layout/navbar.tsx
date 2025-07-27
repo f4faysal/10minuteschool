@@ -40,7 +40,7 @@ export default function Navbar({ lang }: { lang: "en" | "bn" }) {
               <img
                 src="https://10minuteschool.com/images/logo.svg"
                 alt="10 Minute School"
-                className="h-8 w-auto"
+                className="h-7 w-auto mr-2"
               />
             </Link>
           </div>

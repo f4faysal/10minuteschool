@@ -1,8 +1,6 @@
-import { Star } from "lucide-react";
 import React from "react";
 
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import VideoGallery from "./gallery";
 
 interface HeroProps {
@@ -13,7 +11,7 @@ const Hero = ({ data }: HeroProps) => {
   const { title, description, sections, checklist, media } = data;
 
   return (
-    <section className="text-white  md:h-[400px] bg-[url('https://cdn.10minuteschool.com/images/ui_%281%29_1716445506383.jpeg')] bg-cover bg-center">
+    <section className="text-white  md:h-[400px] bg-[url('/bg.jpeg')] bg-cover bg-center">
       <div className="max-w-7xl mx-auto px-4 pt-8 md:py-8 h-full flex flex-col justify-center">
         <div className="sm:hidden mt-5">
           <VideoGallery media={media} />
