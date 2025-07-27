@@ -6,7 +6,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100 mt-10">
+    <footer className="bg-white border-t border-gray-100 md:min-h-screen flex items-end">
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Header Section */}
         <div className="text-center space-y-2">

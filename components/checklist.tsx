@@ -4,23 +4,24 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 
 interface ChecklistProps {
-  courseData: ApiResponse | null;
+  data: Data;
 }
 
-const Checklist = ({ courseData }: ChecklistProps) => {
+const Checklist = ({ data }: ChecklistProps) => {
+  const { media, cta_text, checklist } = data;
   return (
     <div className="md:sticky top-0 space-y-6 z-30">
       <div className="bg-white md:shadow-lg rounded-xs p-1.5">
         <div className="hidden md:block">
-          <VideoGallery courseData={courseData} />
+          <VideoGallery media={media} />
         </div>
         <div className="p-4 pt-0">
           <Button className="w-full mb-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 text-lg">
-            {courseData?.data.cta_text.name}
+            {cta_text.name}
           </Button>
           <div className="space-y-3">
             <h4 className="font-semibold text-sm mb-3">এই কোর্সে যা পাবেন:</h4>
-            {courseData?.data.checklist.map((stat, index) => (
+            {checklist.map((stat, index) => (
               <div key={index} className="flex items-center gap-3">
                 <Image
                   src={stat.icon}

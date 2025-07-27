@@ -5,12 +5,10 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 interface VideoGalleryProps {
-  courseData: ApiResponse | null;
+  media: Medium[];
 }
 
-export default function VideoGallery({ courseData }: VideoGalleryProps) {
-  const media = courseData?.data.media || [];
-
+export default function VideoGallery({ media }: VideoGalleryProps) {
   const previewMedia = media.filter((m) => m.name === "preview_gallery");
   const trailer = media.find((m) => m.name === "trailer");
 

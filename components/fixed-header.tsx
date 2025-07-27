@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 
 interface FixedHeaderProps {
-  courseData: ApiResponse | null;
+  data: Data;
 }
 
-const FixedHeader = ({ courseData }: FixedHeaderProps) => {
-  const course = courseData?.data;
+const FixedHeader = ({ data }: FixedHeaderProps) => {
+  const course = data;
   return (
     <section className="bg-neutral-900 text-white fixed top-0 left-0 right-0 z-10 h-16">
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-full">
@@ -26,29 +26,6 @@ const FixedHeader = ({ courseData }: FixedHeaderProps) => {
               (82.6% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
             </p>
           </div>
-        </div>
-        <div className=" items-center gap-2 hidden sm:flex">
-          <div className="space-y-0.5">
-            <span className="flex items-center gap-1 text-sm font-medium text-gray-300">
-              <Image
-                src={course?.checklist[0]?.icon || ""}
-                alt="Participants"
-                width={500}
-                height={300}
-                className="h-4 object-contain bg-white w-fit rounded-full p-0.5"
-              />
-              <span>{course?.checklist[0]?.text}</span>
-            </span>
-            <span className="flex items-center gap-1 justify-end">
-              <span className="text-green-500 font-bold text-sm">৳ 3850</span>
-              <span className="text-red-400 line-through text-xs font-normal">
-                ৳ 5000
-              </span>
-            </span>
-          </div>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-sm hover:bg-green-600 transition-colors">
-            {course?.cta_text.name}
-          </button>
         </div>
       </div>
     </section>
