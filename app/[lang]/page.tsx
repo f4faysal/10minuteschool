@@ -22,7 +22,6 @@ export default async function ProductPage({
   const sortedSections = data.sections.sort(
     (a, b) => a.order_idx - b.order_idx
   );
-  console.log(sortedSections);
   return (
     <div>
       <FixedHeader data={data} />
