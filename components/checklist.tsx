@@ -15,7 +15,7 @@ const Checklist = ({ data }: ChecklistProps) => {
         <div className="hidden md:block">
           <VideoGallery media={media} />
         </div>
-        <div className="p-4 pt-0">
+        <div className="md:p-4 pt-0 ">
           <Button className="w-full mb-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 text-lg">
             {cta_text.name}
           </Button>

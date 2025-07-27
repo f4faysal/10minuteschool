@@ -11,7 +11,7 @@ export default function FeaturesSection({ section }: FeaturesSectionProps) {
   return (
     <section className="space-y-2">
       <h2 className="text-xl font-bold text-slate-900 mt-4">{section.name}</h2>
-      <div className="grid grid-cols-2 gap-6 bg-stone-950 rounded-xs p-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 bg-stone-950 rounded-sm p-2">
         {features.map((feature) => (
           <div key={feature.id}>
             <div className="flex items-start p-6 gap-4">

@@ -28,7 +28,7 @@ export default async function ProductPage({
       <FixedHeader data={data} />
       <Hero data={data} />
       <section className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-3 md:gap-8 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-8 gap-4">
           <div className="md:col-span-2 order-2 md:order-1 space-y-8">
             {sortedSections.map((section) => {
               switch (section.type) {

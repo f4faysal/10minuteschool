@@ -2,7 +2,8 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Play, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { RiDoubleQuotesL } from "react-icons/ri";
 
 interface TestimonialsSectionProps {
   section: Section;
@@ -46,12 +47,12 @@ export default function TestimonialsSection({
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="flex-shrink-0 w-[calc(50%-.5rem)] md:w-[372px] snap-start mt-5"
+              className="flex-shrink-0 w-[calc(100%-.5rem)] md:w-[372px] snap-start mt-5"
             >
               <div className="border rounded-sm p-5 h-full shadow-sm bg-white relative flex flex-col justify-between ">
                 {/* Quote icon */}
                 <div className="absolute -top-4 left-5 bg-red-100 p-2 rounded-full">
-                  <Quote className="w-4 h-4 text-red-500" />
+                  <RiDoubleQuotesL className="w-4 h-4 text-red-500" />
                 </div>
 
                 {/* Video or text testimonial */}

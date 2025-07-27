@@ -19,7 +19,7 @@ export default function EngagementSection({ section }: EngagementSectionProps) {
             backgroundPosition: "center",
           }}
         >
-          <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 p-6">
+          <div className="relative  flex flex-col md:flex-row items-center gap-6 p-6">
             {/* Text content */}
             <div className="flex-1 space-y-3 text-center md:text-left">
               <Image
