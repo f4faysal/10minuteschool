@@ -47,7 +47,7 @@ const Hero = ({ data }: HeroProps) => {
           </Avatar>
           <div>
             <p className="font-semibold">{sections[2].values[0].name}</p>
-            <p
+            <div
               className="text-sm text-gray-300"
               dangerouslySetInnerHTML={{
                 __html: sections[2].values[0].description?.split(";")[0],

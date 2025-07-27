@@ -34,7 +34,7 @@ A modern, responsive product page for the IELTS Course by Munzereen Shahid, buil
 - **Accessibility** - ARIA labels, keyboard navigation, and screen reader support
 - **Error Handling** - Graceful error states and loading indicators
 - **Performance Optimization** - Image optimization, code splitting, and lazy loading
-- **Docker Support** - Containerized deployment with multi-stage builds
+- **Docker Support** - Simple containerized deployment
 
 ## 🛠️ Tech Stack
 
@@ -100,7 +100,7 @@ curl --request GET \
 
 ## 🐳 Docker Deployment
 
-### Development Build (Windows Compatible)
+### Simple Docker Build
 
 ```bash
 # Build Docker image
@@ -110,40 +110,15 @@ docker build -t 10minuteschool-ielts .
 docker run -p 3000:3000 10minuteschool-ielts
 ```
 
-### Production Build (Linux Environments)
-
-```bash
-# Build with standalone output for smaller image size
-docker build -f Dockerfile.prod -t 10minuteschool-ielts-prod .
-
-# Run container
-docker run -p 3000:3000 10minuteschool-ielts-prod
-```
-
 ### Docker Compose
 
-```yaml
-version: "3.8"
-services:
-  web:
-    build: .
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
+```bash
+# Start with Docker Compose
+docker-compose up
+
+# Run in background
+docker-compose up -d
 ```
-
-## 🔧 Build Configuration
-
-### Windows Compatibility
-
-The project is configured to work seamlessly on Windows systems by avoiding symlink issues that can occur with the `standalone` output option. For production deployments on Linux environments, use `Dockerfile.prod`.
-
-### Next.js Configuration
-
-- **Experimental Features** - Package import optimization for better performance
-- **Image Optimization** - Configured for remote domains
-- **Build Optimization** - TypeScript and ESLint checks disabled for faster builds
 
 ## 📁 Project Structure
 
@@ -164,8 +139,8 @@ The project is configured to work seamlessly on Windows systems by avoiding syml
 │   └── seo.ts           # SEO utilities
 ├── types/               # TypeScript type definitions
 ├── public/              # Static assets
-├── Dockerfile           # Development Docker configuration
-├── Dockerfile.prod      # Production Docker configuration
+├── Dockerfile           # Docker configuration
+├── docker-compose.yml   # Docker Compose configuration
 └── .dockerignore        # Docker build exclusions
 ```
 
@@ -189,18 +164,11 @@ The project is configured to work seamlessly on Windows systems by avoiding syml
 
 ## 🔧 Configuration
 
-### Environment Variables
-
-```env
-# Optional: Override API URL for development
-NEXT_PUBLIC_API_BASE_URL=https://api.10minuteschool.com
-```
-
 ### Next.js Configuration
 
-- **Experimental Features** - Package import optimization
+- **Experimental Features** - Package import optimization for better performance
 - **Image Optimization** - Configured for remote domains
-- **Build Optimization** - Optimized for development and production
+- **Build Optimization** - TypeScript and ESLint checks disabled for faster builds
 
 ## 🚀 Performance Features
 
