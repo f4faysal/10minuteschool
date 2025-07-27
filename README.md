@@ -100,7 +100,7 @@ curl --request GET \
 
 ## 🐳 Docker Deployment
 
-### Build and Run
+### Development Build (Windows Compatible)
 
 ```bash
 # Build Docker image
@@ -108,6 +108,16 @@ docker build -t 10minuteschool-ielts .
 
 # Run container
 docker run -p 3000:3000 10minuteschool-ielts
+```
+
+### Production Build (Linux Environments)
+
+```bash
+# Build with standalone output for smaller image size
+docker build -f Dockerfile.prod -t 10minuteschool-ielts-prod .
+
+# Run container
+docker run -p 3000:3000 10minuteschool-ielts-prod
 ```
 
 ### Docker Compose
@@ -122,6 +132,18 @@ services:
     environment:
       - NODE_ENV=production
 ```
+
+## 🔧 Build Configuration
+
+### Windows Compatibility
+
+The project is configured to work seamlessly on Windows systems by avoiding symlink issues that can occur with the `standalone` output option. For production deployments on Linux environments, use `Dockerfile.prod`.
+
+### Next.js Configuration
+
+- **Experimental Features** - Package import optimization for better performance
+- **Image Optimization** - Configured for remote domains
+- **Build Optimization** - TypeScript and ESLint checks disabled for faster builds
 
 ## 📁 Project Structure
 
@@ -142,7 +164,9 @@ services:
 │   └── seo.ts           # SEO utilities
 ├── types/               # TypeScript type definitions
 ├── public/              # Static assets
-└── Dockerfile           # Docker configuration
+├── Dockerfile           # Development Docker configuration
+├── Dockerfile.prod      # Production Docker configuration
+└── .dockerignore        # Docker build exclusions
 ```
 
 ## 🎨 Component Architecture
@@ -160,6 +184,8 @@ services:
 - **TestimonialsSection** - Student reviews
 - **FAQSection** - Frequently asked questions
 - **EngagementSection** - Call-to-action elements
+- **ErrorDisplay** - Error handling component
+- **LoadingSpinner** - Loading state component
 
 ## 🔧 Configuration
 
@@ -172,9 +198,9 @@ NEXT_PUBLIC_API_BASE_URL=https://api.10minuteschool.com
 
 ### Next.js Configuration
 
-- **Standalone Output** - Enabled for Docker deployment
-- **Image Optimization** - Configured for remote domains
 - **Experimental Features** - Package import optimization
+- **Image Optimization** - Configured for remote domains
+- **Build Optimization** - Optimized for development and production
 
 ## 🚀 Performance Features
 
