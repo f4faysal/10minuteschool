@@ -1,8 +1,14 @@
 import Checklist from "@/components/checklist";
+import CourseDetailsSection from "@/components/course-details-section";
+import EngagementSection from "@/components/engagement-section";
+import ExclusiveFeaturesSection from "@/components/exclusive-features-section";
+import FeaturesSection from "@/components/features-section";
 import FixedHeader from "@/components/fixed-header";
 import VideoGallery from "@/components/gallery";
 import Hero from "@/components/hero";
 import InstructorsSection from "@/components/instructors-section";
+import LearningOutcomesSection from "@/components/learning-outcomes-section";
+import TestimonialsSection from "@/components/testimonials-section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getIeltsCourse } from "@/lib/action/ielts-course.action";
@@ -37,7 +43,7 @@ export default async function ProductPage({
       <Hero courseData={productData} />
       <section className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-3 md:gap-8 gap-4">
-          <div className="md:col-span-2 order-2 md:order-1 space-y-12">
+          <div className="md:col-span-2 order-2 md:order-1 space-y-8">
             {sortedSections.map((section) => {
               switch (section.type) {
                 case "instructors":
@@ -46,37 +52,36 @@ export default async function ProductPage({
                   );
                 case "features":
                   return (
-                    // <FeaturesSection key={section.type} section={section} />
-                    <>features</>
+                    <FeaturesSection key={section.type} section={section} />
+                  );
+                case "group_join_engagement":
+                  return (
+                    <EngagementSection key={section.type} section={section} />
                   );
                 case "pointers":
                   return (
-                    // <LearningOutcomesSection
-                    //   key={section.type}
-                    //   section={section}
-                    // />
-                    <>pointers</>
-                  );
-                case "feature_explanations":
-                  return (
-                    // <ExclusiveFeaturesSection
-                    //   key={section.type}
-                    //   section={section}
-                    // />
-                    <>feature_explanations</>
+                    <LearningOutcomesSection
+                      key={section.type}
+                      section={section}
+                    />
                   );
                 case "about":
                   return (
-                    // <CourseDetailsSection
-                    //   key={section.type}
-                    //   section={section}
-                    // />
-                    <>about</>
+                    <CourseDetailsSection
+                      key={section.type}
+                      section={section}
+                    />
+                  );
+                case "feature_explanations":
+                  return (
+                    <ExclusiveFeaturesSection
+                      key={section.type}
+                      section={section}
+                    />
                   );
                 case "testimonials":
                   return (
-                    // <TestimonialsSection key={section.type} section={section} />
-                    <>testimonials</>
+                    <TestimonialsSection key={section.type} section={section} />
                   );
                 case "faq":
                   return (

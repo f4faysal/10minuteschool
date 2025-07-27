@@ -79,6 +79,26 @@ interface Feature {
   title: string;
 }
 
+interface GroupJoinEngagement {
+  background: {
+    image: string;
+    primary_color: string;
+    secondary_color: string;
+  };
+  cta: {
+    clicked_url: string;
+    color: string;
+    text: string;
+  };
+  description: string;
+  description_color: string;
+  id: string;
+  thumbnail: string;
+  title: string;
+  title_color: string;
+  top_left_icon_img: string;
+}
+
 interface Pointer {
   color: string;
   icon: string;
@@ -93,6 +113,16 @@ interface ExclusiveFeature {
   id: string;
   title: string;
   video_thumbnail: string;
+}
+
+interface Testimonial {
+  id: string;
+  name: string;
+  description: string;
+  testimonial: string;
+  profile_image: string;
+  thumb?: string;
+  video_url?: string;
 }
 
 interface About {
