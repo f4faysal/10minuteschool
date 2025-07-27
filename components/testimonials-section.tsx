@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play, Quote } from "lucide-react";
 
@@ -11,6 +11,8 @@ interface TestimonialsSectionProps {
 export default function TestimonialsSection({
   section,
 }: TestimonialsSectionProps) {
+  // video play
+  const [isPlayingVideo, setIsPlayingVideo] = useState<string | null>(null);
   const testimonials = section.values as Testimonial[];
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -55,20 +57,36 @@ export default function TestimonialsSection({
                 {/* Video or text testimonial */}
                 {testimonial.video_url ? (
                   <div className="w-full mb-2 overflow-hidden rounded-xs aspect-video relative ">
-                    <Image
-                      src={testimonial.thumb || "/placeholder.svg"}
-                      alt="Testimonial video"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full  ">
-                        <Play
-                          className="size-12 text-red-500 bg-white rounded-full p-2"
-                          fill="currentColor"
+                    {isPlayingVideo === testimonial.id ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${testimonial.video_url}?autoplay=1`}
+                        title={`Testimonial by ${testimonial.name}`}
+                        className="w-full h-full"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <div>
+                        <Image
+                          src={testimonial.thumb || `/placeholder.svg`}
+                          alt="Testimonial video"
+                          fill
+                          className="object-cover"
                         />
+                        <div
+                          className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                          onClick={() => setIsPlayingVideo(testimonial.id)}
+                        >
+                          <div className="bg-white/80 backdrop-blur-sm p-2 rounded-full">
+                            <Play
+                              className="size-12 text-red-500 bg-white rounded-full p-2"
+                              fill="currentColor"
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 ) : (
                   <p
