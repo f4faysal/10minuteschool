@@ -19,10 +19,9 @@ export default async function ProductPage({
   const lang = (await params).lang || "en";
   const productData = await getIeltsCourse(lang);
   const { data } = productData as ApiResponse;
-  const sortedSections = data.sections.sort(
+  const sortedSections = data.sections?.sort(
     (a, b) => a.order_idx - b.order_idx
   );
-  console.log(sortedSections);
   return (
     <div>
       <FixedHeader data={data} />
